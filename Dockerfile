@@ -7,7 +7,7 @@ LABEL vendor="Men & Mice" maintainer="<services@menandmice.com>" version="8.2.8-
 RUN yum -y update && yum -y install wget && yum clean all
 COPY named.conf /etc/named.conf
 COPY localhost.db /var/named/localhost.db
-RUN adduser --system --shell /bin/nologin --gecos 'BIND 9 Server' --group --disabled-password --home /var/named named
+RUN adduser --system --shell /bin/nologin --create-home --home-dir /var/named named
 RUN wget -q http://download.menandmice.com/Linux/8.2.8/mmsuite-controllers-8.2.8.linux.x64.tgz
 RUN tar xfz mmsuite-controllers-8.2.8.linux.x64.tgz
 RUN mv /mmsuite-controllers*/linux/mmremoted /usr/sbin/mmremoted
